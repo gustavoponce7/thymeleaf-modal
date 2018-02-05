@@ -8,9 +8,13 @@
 				
 				<div class="modal-body">
 					<input type="hidden" th:field="${student.id}" />
-					<!--<span style="font-weight:bold">Id: </span><span th:text="${student.id}"></span><br>-->
-					<span style="font-weight:bold">Name: </span><input type="text" th:field="${student.name}" /><br>
-					<span style="font-weight:bold">Last Name: </span><input type="text" th:field="${student.lastName}" /><br>
+						<!--<span style="font-weight:bold">Id: </span><span th:text="${student.id}"></span><br>-->
+					<div class="form-group">
+						<label >Name</label>
+						<input type="text" th:field="${student.name}" class="form-control"/><br>
+					</div>
+						<label>Last Name</label>
+						<input type="text" th:field="${student.lastName}" class="form-control"/><br>
 					</form>
 				</div>
 				<div class="modal-footer">
