@@ -1,0 +1,23 @@
+<div id="deleteStudentModal" class="modal fade" role="dialog" th:fragment="delete-student">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title font-weight-bold">Student Details</h4>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete <span th:text="${student.name}"></span>?</p>
+				<span style="font-weight:bold">Id: </span><span th:text="${student.id}"></span><br>
+				<span style="font-weight:bold">Name: </span><span th:text="${student.name}"></span><br>
+				<span style="font-weight:bold">Last Name: </span><span th:text="${student.lastName}"></span><br>
+			</div>
+			<div class="modal-footer">
+				<button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+				<!--  form to delete student -->
+				<form th:action="@{/delete-student/{id}(id=${student.id})}" method="post">
+		            <button type="submit">Delete</button>
+	        	</form>
+				
+			</div>
+		</div>
+	</div>
+</div>
