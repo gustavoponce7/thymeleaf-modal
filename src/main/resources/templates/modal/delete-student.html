@@ -11,10 +11,9 @@
 				<span style="font-weight:bold">Last Name: </span><span th:text="${student.lastName}"></span><br>
 			</div>
 			<div class="modal-footer">
-				<button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
-				<!--  form to delete student -->
 				<form th:action="@{/delete-student/{id}(id=${student.id})}" method="post">
-		            <button type="submit">Delete</button>
+					<button type="button"  class="btn btn-default" data-dismiss="modal">Cancel</button>
+		            <button type="submit" class="btn btn-primary">Delete</button>
 	        	</form>
 				
 			</div>

@@ -26,6 +26,16 @@
 				}
 			});
 		}
+		function openEditModal(id){
+			$.ajax({
+				url: "/edit-student/" + id,
+				success: function(data){
+					$("#editStudentModalHolder").html(data);
+					$('#editStudentModal').modal();
+	                $('#editStudentModal').modal('open');
+				}
+			});
+		}
 	</script>
 </head>
 
@@ -39,15 +49,23 @@
 				<th>Id</th>
 				<th>Name</th>
 				<th>Last Name</th>
-				<th>Detail</th>
-				<th>Remove</th>
+				<th>Operations</th>
 			</tr>
 			<tr th:each="student : ${students}">
 				<td th:text="${student.id}"></td>
 				<td th:text="${student.name}"></td>
 				<td th:text="${student.lastName}"></td>
-				<td th:onclick="'javascript:openStudentModal(\''+ ${student.id} + '\');'">Details</td>
-				<td th:onclick="'javascript:openDeleteModal(\''+ ${student.id} + '\');'">Delete</td>
+				<td>
+					<a href="#" th:onclick="'javascript:openStudentModal(\''+ ${student.id} + '\');'" class="btn btn-info btn-xs">
+				    	<span class="glyphicon glyphicon-list-alt"></span> 
+					</a>
+					<a href="#" th:onclick="'javascript:openEditModal(\''+ ${student.id} + '\');'" class="btn btn-success btn-xs">
+				    	<span class="glyphicon glyphicon-pencil"></span> 
+					</a>
+					<a href="#" th:onclick="'javascript:openDeleteModal(\''+ ${student.id} + '\');'" class="btn btn-danger btn-xs">
+				    	<span class="glyphicon glyphicon-trash"></span> 
+					</a>
+				</td>
 				
 			</tr>
 		</table>
@@ -56,6 +74,7 @@
 	<!-- modal -->
 	<div th:fragment="student" id="studentModalHolder"></div>
 	<div th:fragment="delete-student" id="deleteStudentModalHolder"></div>
+	<div th:fragment="edit-student" id="editStudentModalHolder"></div>
 	
 </body>
 </html>
