@@ -36,6 +36,16 @@
 				}
 			});
 		}
+		function openAddStudentModal(){
+			$.ajax({
+				url: "/add-student",
+				success: function(data){
+					$("#addStudentModalHolder").html(data);
+					$('#addStudentModal').modal();
+	                $('#addStudentModal').modal('open');
+				}
+			});
+		}
 	</script>
 </head>
 
@@ -44,37 +54,44 @@
 	
 		<h1>Students</h1>
 		
-		<table class="table">
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Last Name</th>
-				<th>Operations</th>
-			</tr>
-			<tr th:each="student : ${students}">
-				<td th:text="${student.id}"></td>
-				<td th:text="${student.name}"></td>
-				<td th:text="${student.lastName}"></td>
-				<td>
-					<a href="#" th:onclick="'javascript:openStudentModal(\''+ ${student.id} + '\');'" class="btn btn-info btn-xs">
-				    	<span class="glyphicon glyphicon-list-alt"></span> 
-					</a>
-					<a href="#" th:onclick="'javascript:openEditModal(\''+ ${student.id} + '\');'" class="btn btn-success btn-xs">
-				    	<span class="glyphicon glyphicon-pencil"></span> 
-					</a>
-					<a href="#" th:onclick="'javascript:openDeleteModal(\''+ ${student.id} + '\');'" class="btn btn-danger btn-xs">
-				    	<span class="glyphicon glyphicon-trash"></span> 
-					</a>
-				</td>
-				
-			</tr>
-		</table>
+		<a href="#" th:onclick="'javascript:openAddStudentModal();'" class="btn btn-info btn-md">
+	    	<span class="glyphicon glyphicon-plus"></span><span> Add New Student</span>
+		</a>
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Last Name</th>
+					<th>Operations</th>
+				</tr>
+				<tr th:each="student : ${students}">
+					<td th:text="${student.id}"></td>
+					<td th:text="${student.name}"></td>
+					<td th:text="${student.lastName}"></td>
+					<td>
+						<a href="#" th:onclick="'javascript:openStudentModal(\''+ ${student.id} + '\');'" class="btn btn-info btn-xs">
+					    	<span class="glyphicon glyphicon-list-alt"></span> 
+						</a>
+						<a href="#" th:onclick="'javascript:openEditModal(\''+ ${student.id} + '\');'" class="btn btn-success btn-xs">
+					    	<span class="glyphicon glyphicon-pencil"></span> 
+						</a>
+						<a href="#" th:onclick="'javascript:openDeleteModal(\''+ ${student.id} + '\');'" class="btn btn-danger btn-xs">
+					    	<span class="glyphicon glyphicon-trash"></span> 
+						</a>
+					</td>
+					
+				</tr>
+			</table>
+		</div>
+		
 	</div>
 	
 	<!-- modal -->
 	<div th:fragment="student" id="studentModalHolder"></div>
 	<div th:fragment="delete-student" id="deleteStudentModalHolder"></div>
 	<div th:fragment="edit-student" id="editStudentModalHolder"></div>
+	<div th:fragment="add-student" id="addStudentModalHolder"></div>
 	
 </body>
 </html>

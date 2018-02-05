@@ -46,32 +46,13 @@ public class StudentController {
 		return modelAndView;
 	}
 	
-	/*
-	 * MODAL DIALOGS
-	 * 
-	 */
-	@GetMapping(value="/student/{id}")
-	public String getStudentModal(@PathVariable("id") long id, ModelMap model) {
-		Student student = studentService.getOneStudentById(id);
-		model.addAttribute("student", student);
-		return "modal/student :: student";
+	@PostMapping(value="/add-student")
+	public ModelAndView addStudent(@ModelAttribute Student student) {
+		studentService.saveStudent(student);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("students", studentService.getAllStudents());
+		modelAndView.setViewName("redirect:/students");
+		return modelAndView;
 	}
 	
-	@GetMapping(value="/delete-student/{id}")
-	public String deleteStudentConfirmation(@PathVariable("id") long id, ModelMap model) {
-		Student student = studentService.getOneStudentById(id);
-		model.addAttribute("student", student);
-		return "modal/delete-student :: delete-student";
-	}
-	
-	@GetMapping(value="/edit-student/{id}")
-	public String editStudentModal(@PathVariable("id") long id, ModelMap model) {
-		Student student = studentService.getOneStudentById(id);
-		model.addAttribute("student", student);
-		return "modal/edit-student :: edit-student";
-	}
-	/*
-	 * 
-	 * END MODAL DIALOGS
-	 */
 }

@@ -2,13 +2,11 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title font-weight-bold">Student Details</h4>
+				<h4 class="modal-title font-weight-bold">Delete Student</h4>
 			</div>
 			<div class="modal-body">
-				<p>Do you really want to delete <span th:text="${student.name}"></span>?</p>
-				<span style="font-weight:bold">Id: </span><span th:text="${student.id}"></span><br>
-				<span style="font-weight:bold">Name: </span><span th:text="${student.name}"></span><br>
-				<span style="font-weight:bold">Last Name: </span><span th:text="${student.lastName}"></span><br>
+				<p>Do you really want to delete user <span style="font-weight:bold" 
+					th:text="|${student.name} ${student.lastName}|"></span>?</p>
 			</div>
 			<div class="modal-footer">
 				<form th:action="@{/delete-student/{id}(id=${student.id})}" method="post">

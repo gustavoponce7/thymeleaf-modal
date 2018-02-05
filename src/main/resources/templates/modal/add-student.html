@@ -1,14 +1,12 @@
-<div id="editStudentModal" class="modal fade" role="dialog" th:fragment="edit-student">
+<div id="addStudentModal" class="modal fade" role="dialog" th:fragment="add-student">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header bg-primary">
-				<h4 class="modal-title"><span style="font-weight:bold">Edit Student</span></h4>
+				<h4 class="modal-title"><span style="font-weight:bold">Add Student</span></h4>
 			</div>
-			<form th:action="@{/edit-student}" method="post">
+			<form th:action="@{/add-student}" method="post">
 				
 				<div class="modal-body">
-					<input type="hidden" th:field="${student.id}" />
-					<!--<span style="font-weight:bold">Id: </span><span th:text="${student.id}"></span><br>-->
 					<span style="font-weight:bold">Name: </span><input type="text" th:field="${student.name}" /><br>
 					<span style="font-weight:bold">Last Name: </span><input type="text" th:field="${student.lastName}" /><br>
 					</form>
