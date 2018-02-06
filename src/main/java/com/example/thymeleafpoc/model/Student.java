@@ -25,7 +25,7 @@ public class Student {
 	private long id;
 	private String name;
 	private String lastName;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate birthday;
 	
 }

@@ -12,7 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.thymeleafpoc.model.Student;
 import com.example.thymeleafpoc.service.StudentService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class StudentController {
 
 	@Autowired
@@ -48,6 +51,7 @@ public class StudentController {
 	
 	@PostMapping(value="/add-student")
 	public ModelAndView addStudent(@ModelAttribute Student student) {
+		log.info(student.toString());
 		studentService.saveStudent(student);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("students", studentService.getAllStudents());
