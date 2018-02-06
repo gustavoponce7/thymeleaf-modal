@@ -7,21 +7,21 @@
 					<h4 class="modal-title"><span style="font-weight:bold">Add Student</span></h4>
 				</div>
 				
-				<form th:action="@{/add-student}" method="post">
+				<form th:action="@{/add-student}" method="post" th:object="${student}" id="add-student-form">
 					
 					<!-- Input values -->
 					<div class="modal-body">
 						<div class="form-group">
 							<label >Name</label>
-							<input type="text" th:field="${student.name}" class="form-control"/>
+							<input type="text" th:field="*{name}" name="name" class="form-control" required="" oninvalid="this.setCustomValidity('Favor de proporcionar un nombre')" oninput="setCustomValidity('')"/>
 						</div>
 						<div class="form-group">
 							<label >Last Name</label>
-							<input type="text" th:field="${student.lastName}" class="form-control"/>
+							<input type="text" th:field="*{lastName}" name="last-name" class="form-control" required="" oninvalid="this.setCustomValidity('Favor de proporcionar los apellidos')" oninput="setCustomValidity('')"/>
 						</div>
 						<div class="form-group">
 							<label >Birthday</label>
-							<input type="text" id="datepicker_add-student" th:field="${student.birthday}" readonly="readonly" class="form-control clsDatePicker"/>
+							<input type="text" id="datepicker_add-student" th:field="*{birthday}" class="form-control clsDatePicker" readonly="readonly" placeholder="dd/mm/yyyy" required="" oninvalid="this.setCustomValidity('Favor de proporcionar la fecha')" oninput="setCustomValidity('')"/>
 						</div>
 					</div>
 					

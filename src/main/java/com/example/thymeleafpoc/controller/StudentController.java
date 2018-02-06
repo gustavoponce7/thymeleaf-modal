@@ -51,9 +51,8 @@ public class StudentController {
 	
 	@PostMapping(value="/add-student")
 	public ModelAndView addStudent(@ModelAttribute Student student) {
-		log.info(student.toString());
-		studentService.saveStudent(student);
 		ModelAndView modelAndView = new ModelAndView();
+		studentService.saveStudent(student);
 		modelAndView.addObject("students", studentService.getAllStudents());
 		modelAndView.setViewName("redirect:/students");
 		return modelAndView;

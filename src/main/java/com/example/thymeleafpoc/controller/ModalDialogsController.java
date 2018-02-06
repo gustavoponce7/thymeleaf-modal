@@ -1,5 +1,7 @@
 package com.example.thymeleafpoc.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -40,13 +42,14 @@ public class ModalDialogsController {
 	public String editStudentModal(@PathVariable("id") long id, ModelMap model) {
 		Student student = studentService.getOneStudentById(id);
 		model.addAttribute("student", student);
-		
 		return "modal/edit-student :: edit-student";
 	}
 	
 	@GetMapping(value="/add-student")
 	public String addStudentModal(ModelMap model) {
-		model.addAttribute("student", new Student());
+		Student student = new Student();
+		student.setBirthday(LocalDate.now());
+		model.addAttribute("student", student);
 		return "modal/add-student :: add-student";
 	}
 	/*

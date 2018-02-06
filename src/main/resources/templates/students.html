@@ -20,7 +20,9 @@
 				url: "/student/" + id,
 				success: function(data){
 					$("#studentModalHolder").html(data);
-					$('#studentModal').modal();
+					$('#studentModal').modal({
+						backdrop: 'static'
+					});
 
 				}
 			});
@@ -31,7 +33,9 @@
 				url: "/delete-student/" + id,
 				success: function(data){
 					$("#deleteStudentModalHolder").html(data);
-					$('#deleteStudentModal').modal();
+					$('#deleteStudentModal').modal({
+						backdrop: 'static'
+					});
 
 				}
 			});
@@ -42,7 +46,9 @@
 				url: "/edit-student/" + id,
 				success: function(data){
 					$("#editStudentModalHolder").html(data);
-					$('#editStudentModal').modal();
+					$('#editStudentModal').modal({
+						backdrop: 'static'
+					});
 				}
 			});
 		}
@@ -52,7 +58,9 @@
 				url: "/add-student",
 				success: function(data){
 					$("#addStudentModalHolder").html(data);
-					$('#addStudentModal').modal();
+					$('#addStudentModal').modal({
+						backdrop: 'static'
+					});
 				}
 			});
 		}
@@ -93,8 +101,10 @@
 		$.datepicker.setDefaults($.datepicker.regional['es']);
 		 
 	</script> 
+	
 	<style type="text/css">
 		.clsDatePicker{z-index:1051 !important;}
+		input[type=text]:enabled {background: #eff8f8;}
 	</style>
 </head>
 
