@@ -23,6 +23,16 @@
 							<label >Birthday</label>
 							<input type="text" id="datepicker_add-student" th:field="*{birthday}" class="form-control clsDatePicker" readonly="readonly" placeholder="dd/mm/yyyy" required="" oninvalid="this.setCustomValidity('Favor de proporcionar la fecha')" oninput="setCustomValidity('')"/>
 						</div>
+						<div class="form-group">
+							<label >Student Type</label>
+							<select class="form-control">
+							   <option th:each="studentType : ${T(com.example.thymeleafpoc.enums.StudentType).values()}"
+							          th:value="${studentType}" 
+							          th:field="*{studentType}"
+							          th:text="${studentType.name}">
+							   </option>
+							</select>						
+						</div>
 					</div>
 					
 					<!-- buttons -->

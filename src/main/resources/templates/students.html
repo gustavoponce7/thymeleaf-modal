@@ -125,6 +125,7 @@
 					<th>Name</th>
 					<th>Last Name</th>
 					<th>Birthday</th>
+					<th>Student Type</th>
 					<th>Operations</th>
 				</tr>
 				<tr th:each="student : ${students}">
@@ -132,6 +133,7 @@
 					<td th:text="${student.name}"></td>
 					<td th:text="${student.lastName}"></td>
 					<td th:text="${#temporals.format(student.birthday, 'dd/MM/yyyy')}"></td>
+					<td th:text="${student.studentType.name}"></td>
 					<td>
 						<a href="#" th:onclick="'javascript:openStudentModal(\''+ ${student.id} + '\');'" class="btn btn-info btn-xs">
 					    	<span class="glyphicon glyphicon-list-alt"></span> 

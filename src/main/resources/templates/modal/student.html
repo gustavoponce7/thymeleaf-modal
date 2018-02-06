@@ -16,6 +16,7 @@
 						<span style="font-weight:bold">Name: </span><span th:text="${student.name}"></span><br>
 						<span style="font-weight:bold">Last Name: </span><span th:text="${student.lastName}"></span><br>
 						<span style="font-weight:bold">Birthday: </span><span th:text="${#temporals.format(student.birthday, 'dd/MM/yyyy')}"></span><br>
+						<span style="font-weight:bold">Student Type: </span><span th:text="${student.studentType.name}"></span><br>
 					</div>
 				</div>
 			</div>

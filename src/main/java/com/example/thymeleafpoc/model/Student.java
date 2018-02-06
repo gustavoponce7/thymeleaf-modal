@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.example.thymeleafpoc.enums.StudentType;
 
 @Entity
 @Data
@@ -27,5 +29,6 @@ public class Student {
 	private String lastName;
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate birthday;
+	private StudentType studentType;
 	
 }
