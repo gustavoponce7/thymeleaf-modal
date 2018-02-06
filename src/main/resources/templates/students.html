@@ -2,9 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Students</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<!-- Bootstrap -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<!-- JQuery UI -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
 	<script type="text/javascript">
 		function openStudentModal(id){
 			$.ajax({
@@ -12,43 +20,68 @@
 				success: function(data){
 					$("#studentModalHolder").html(data);
 					$('#studentModal').modal();
-	                $('#studentModal').modal('open');
 
 				}
 			});
 		}
+		
 		function openDeleteModal(id){
 			$.ajax({
 				url: "/delete-student/" + id,
 				success: function(data){
 					$("#deleteStudentModalHolder").html(data);
 					$('#deleteStudentModal').modal();
-	                $('#deleteStudentModal').modal('open');
 
 				}
 			});
 		}
+		
 		function openEditModal(id){
 			$.ajax({
 				url: "/edit-student/" + id,
 				success: function(data){
 					$("#editStudentModalHolder").html(data);
 					$('#editStudentModal').modal();
-	                $('#editStudentModal').modal('open');
 				}
 			});
 		}
+		
 		function openAddStudentModal(){
 			$.ajax({
 				url: "/add-student",
 				success: function(data){
 					$("#addStudentModalHolder").html(data);
 					$('#addStudentModal').modal();
-	                $('#addStudentModal').modal('open');
 				}
 			});
 		}
 	</script>
+	
+	<script type="text/javascript">
+		//Date picker
+		$( function() {
+		   $( "#datepicker" ).datepicker();
+		 } ); 
+		
+		 $( function() {
+			   $( "#datepicker2" ).datepicker({
+					 dateFormat: 'dd/mm/yy',
+					 defaultDate: new Date(),
+					 changeMonth: true,
+					 changeYear: true
+				});
+		 } );
+		 
+		 $( "#datepicker" ).datepicker({
+			 dateFormat: 'dd/mm/yy',
+			 defaultDate: new Date(),
+			 changeMonth: true,
+			 changeYear: true
+		});
+
+		$('#datepicker').css("z-index","0");
+		 
+	</script> 
 </head>
 
 <body>
@@ -84,10 +117,11 @@
 					    	<span class="glyphicon glyphicon-trash"></span> 
 						</a>
 					</td>
-					
 				</tr>
 			</table>
 		</div>
+		<input type="text" id="datepicker2" class="form-control">
+		
 		
 	</div>
 	

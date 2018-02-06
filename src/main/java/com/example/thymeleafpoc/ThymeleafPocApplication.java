@@ -1,5 +1,9 @@
 package com.example.thymeleafpoc;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,14 +26,14 @@ public class ThymeleafPocApplication {
 	public CommandLineRunner init(StudentService studentService) {
 		return (args) -> {
 			log.info("Init App");
-			studentService.saveStudent(Student.builder().name("Gustavo").lastName("Ponce").build());
-			studentService.saveStudent(Student.builder().name("John").lastName("Smith").build());
-			studentService.saveStudent(Student.builder().name("Peter").lastName("Punk").build());
-			studentService.saveStudent(Student.builder().name("Bob").lastName("Marley").build());
-			studentService.saveStudent(Student.builder().name("David").lastName("Gilmour").build());
+			studentService.saveStudent(Student.builder().name("Gustavo").lastName("Ponce").birthday(LocalDate.of(1984, Month.OCTOBER, 20)).build());
+			studentService.saveStudent(Student.builder().name("John").lastName("Smith").birthday(LocalDate.of(1990, Month.FEBRUARY, 23)).build());
+			studentService.saveStudent(Student.builder().name("Peter").lastName("Punk").birthday(LocalDate.of(1700, Month.JANUARY, 1)).build());
+			studentService.saveStudent(Student.builder().name("Bob").lastName("Marley").birthday(LocalDate.of(1974, Month.SEPTEMBER, 23)).build());
+			studentService.saveStudent(Student.builder().name("David").lastName("Gilmour").birthday(LocalDate.of(1999, Month.MARCH, 5)).build());
 			
 			for (Student student : studentService.getAllStudents()) {
-				log.info(student.getId() + " " + student.getName() + " " + student.getLastName());
+				log.info(student.getId() + " " + student.getName() + " " + student.getLastName() + " " + student.getBirthday().format(DateTimeFormatter.ofPattern("dd/MM/uuuu")));
 			}
 		};
 	}
